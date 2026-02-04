@@ -23,7 +23,7 @@ Locators Used: XPath, CSS Selectors, ID, Name
 📁 Project Structure
 
 All automation programs are organized concept-wise under src/main/java to make learning and understanding easier.
-
+```plaintext
 Selenium-WebDriver-Automation-Suite/
 └── src/
     └── main/
@@ -73,6 +73,7 @@ Selenium-WebDriver-Automation-Suite/
             │
             └── locatorsandCssSelectors/
                 └── CssSelectorsExamples.java
+````
 
 🎯 Key Automation Concepts Covered
 
