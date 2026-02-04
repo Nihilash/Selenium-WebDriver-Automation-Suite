@@ -1,26 +1,23 @@
-Selenium WebDriver Automation Suite
-📌 Project Overview
+# Selenium WebDriver Automation Suite
+
+## Project Overview
 
 This repository contains a Java-based Selenium WebDriver automation project developed to gain hands-on experience in web application testing.
-The project focuses on automating common and real-world UI scenarios such as form handling, dynamic elements, browser interactions, and test execution using TestNG.
+
+The project focuses on automating common and real-world UI scenarios such as form handling, dynamic web elements, browser interactions, and test execution using TestNG.
 
 Built as a learning-oriented automation project, it demonstrates a clear progression from basic locators to more advanced Selenium concepts required for entry-level Quality Assurance and Automation Engineer roles.
 
-🛠️ Tech Stack
+## Tech Stack
 
-Language: Java (JDK 8+)
+- Language: Java (JDK 8+)
+- Automation Tool: Selenium WebDriver (4.x)
+- Test Framework: TestNG
+- Build Tool: Maven
+- Version Control: Git & GitHub
+- Locators Used: XPath, CSS Selectors, ID, Name
 
-Automation Tool: Selenium WebDriver (4.x)
-
-Test Framework: TestNG
-
-Build Tool: Maven
-
-Version Control: Git & GitHub
-
-Locators Used: XPath, CSS Selectors, ID, Name
-
-📁 Project Structure
+## Project Structure
 
 All automation programs are organized concept-wise under src/main/java to make learning and understanding easier.
 ```plaintext
@@ -28,7 +25,6 @@ Selenium-WebDriver-Automation-Suite/
 └── src/
     └── main/
         └── java/
-            │
             ├── Xpath/
             │   ├── Customdropdown.java
             │   ├── Dropdowns.java
@@ -73,97 +69,55 @@ Selenium-WebDriver-Automation-Suite/
             │
             └── locatorsandCssSelectors/
                 └── CssSelectorsExamples.java
-````
+`````
+## Key Automation Concepts Covered
 
-🎯 Key Automation Concepts Covered
+- Element locating using XPath and CSS selectors
+- Handling dynamic and multi-attribute elements
+- Working with custom dropdowns
+- Handling iframes and JavaScript popups
+- Browser navigation and WebDriver methods
+- Mouse and keyboard actions using Actions class
+- Drag-and-drop interactions
+- File upload automation
+- Screenshot capture for debugging and validation
+- Test execution using TestNG annotations
+- Automation practice on real websites like Facebook, YouTube, and SauceDemo
 
-Element Locating
+## Getting Started
 
-XPath (relative, absolute, axes, functions)
-
-CSS selectors and basic locators
-
-Dynamic UI Handling
-
-Custom dropdowns
-
-Multi-attribute and dynamic elements
-
-Browser & UI Interaction
-
-iFrames handling
-
-JavaScript alerts and popups
-
-Browser navigation methods
-
-User Actions
-
-Mouse and keyboard actions using Actions class
-
-Drag-and-drop interactions
-
-File Handling
-
-File upload automation
-
-Screenshot capture for validation/debugging
-
-Test Execution
-
-TestNG annotations and lifecycle understanding
-
-Real-world Practice
-
-Automation scripts for Facebook, YouTube, and SauceDemo websites
-
-▶️ Getting Started
-Clone the Repository
+Clone the repository:
 git clone https://github.com/Nihilash/Selenium-WebDriver-Automation-Suite.git
 
-Prerequisites
+Prerequisites:
+- Java JDK 8 or above
+- Maven
+- Any IDE (Eclipse or IntelliJ IDEA)
 
-Java JDK 8 or above
+Running the tests:
+- Open the project in your IDE
+- Run individual Java files directly
+- Or execute tests using TestNG runner
 
-Maven
+Note:
+Selenium 4 manages browser drivers automatically using Selenium Manager.
 
-Any IDE (Eclipse / IntelliJ IDEA)
+## Purpose of This Project
 
-Running the Tests
+- Strengthen Selenium WebDriver fundamentals
+- Practice UI automation on real web applications
+- Understand locator behavior in dynamic web pages
+- Prepare for entry-level QA and Automation Engineer roles
 
-Open the project in your IDE
+## Future Enhancements
 
-Run individual .java files directly
+- Refactor scripts into Page Object Model
+- Add reusable utility and base classes
+- Introduce data-driven testing
+- Integrate reporting tools
+- Enable CI execution using GitHub Actions
 
-Or execute TestNG tests via the TestNG runner
-
-(Selenium 4 manages browser drivers automatically using Selenium Manager)
-
-📌 Purpose of This Project
-
-This project was created to:
-
-Strengthen Selenium WebDriver fundamentals
-
-Practice UI automation on real applications
-
-Understand how different locators behave in dynamic web pages
-
-Prepare for entry-level QA and Automation Engineer roles
-
-🚀 Future Enhancements
-
-Refactor scripts into Page Object Model (POM)
-
-Add reusable utility and base classes
-
-Introduce data-driven testing (Excel/JSON)
-
-Integrate reporting tools (Extent / Allure)
-
-Enable CI execution using GitHub Actions
-
-👤 Author
+## Author
 
 Nihilash L V
 Fresher | Aspiring Quality Assurance Engineer
