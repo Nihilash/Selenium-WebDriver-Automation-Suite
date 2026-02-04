@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page with Frames</title>
+</head>
+<body>
+
+    <h1>Main Page</h1>
+    <p>This is the main content of the page. Below are some frames for testing, including nested frames.</p>
+    
+    <!-- First frame -->
+    <iframe id="frame1" name="frame1" width="400" height="300" src="about:blank">
+        <p>Your browser does not support iframes.</p>
+    </iframe>
+    
+    <br><br>
+    
+    <!-- Second frame (nested inside the first frame) -->
+    <iframe id="frame2" name="frame2" width="400" height="300" src="about:blank">
+        <p>Your browser does not support iframes.</p>
+    </iframe>
+    
+    <br><br>
+    
+    <!-- Third frame with dynamic content (will load from a new HTML document) -->
+    <iframe id="dynamicFrame" name="dynamicFrame" width="400" height="300" src="about:blank">
+        <p>Your browser does not support iframes.</p>
+    </iframe>
+
+    <script>
+        // Adding dynamic content to the frames using JavaScript
+        // Frame 1: Adding content inside the first frame
+        const frame1Document = document.getElementById('frame1').contentWindow.document;
+        frame1Document.open();
+        frame1Document.write('<h2>Frame 1 Content</h2><p>This is the content inside the first frame.</p><button onclick="alert(\'Button inside Frame 1 clicked!\')">Click Me (Frame 1)</button>');
+
+        // Nested Frame inside Frame 1
+        const nestedFrame1 = frame1Document.createElement('iframe');
+        nestedFrame1.src = 'about:blank';
+        nestedFrame1.width = '300';
+        nestedFrame1.height = '200';
+        frame1Document.body.appendChild(nestedFrame1);
+
+        const nestedFrame1Doc = nestedFrame1.contentWindow.document;
+        nestedFrame1Doc.open();
+        nestedFrame1Doc.write('<h3>Nested Frame 1 Content</h3><p>This is the content inside the nested frame within Frame 1.</p><button onclick="alert(\'Button inside Nested Frame 1 clicked!\')">Click Me (Nested Frame 1)</button>');
+        nestedFrame1Doc.close();
+
+        frame1Document.close();
+
+        // Frame 2: Adding content inside the second frame
+        const frame2Document = document.getElementById('frame2').contentWindow.document;
+        frame2Document.open();
+        frame2Document.write('<h2>Frame 2 Content</h2><p>This is the content inside the second frame.</p><button onclick="alert(\'Button inside Frame 2 clicked!\')">Click Me (Frame 2)</button>');
+        frame2Document.close();
+
+        // Frame 3: Adding dynamic content to the third frame
+        const dynamicFrameDocument = document.getElementById('dynamicFrame').contentWindow.document;
+        dynamicFrameDocument.open();
+        dynamicFrameDocument.write('<h2>Dynamic Frame Content</h2><p>This is the content inside the dynamically loaded frame.</p><button onclick="alert(\'Button inside Dynamic Frame clicked!\')">Click Me (Dynamic Frame)</button>');
+        dynamicFrameDocument.close();
+    </script>
+
+</body>
+</html>

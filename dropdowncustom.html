@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom Dropdown Example</title>
+    <style>
+        .custom-dropdown {
+            border: 1px solid #ccc;
+            width: 200px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .dropdown-options {
+            display: none;
+            border: 1px solid #ccc;
+            border-top: none;
+            position: absolute;
+            background-color: #fff;
+            width: 200px;
+        }
+        .dropdown-options div {
+            padding: 5px;
+        }
+        .dropdown-options div:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+    <script>
+        function toggleDropdown() {
+            document.getElementById("options").style.display = 
+                document.getElementById("options").style.display === "block" ? "none" : "block";
+        }
+        function selectOption(optionText) {
+            document.getElementById("selectedOption").innerText = optionText;
+            document.getElementById("options").style.display = "none";
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Custom Dropdown Example</h2>
+
+    <div class="custom-dropdown" onclick="toggleDropdown()">
+        <span id="selectedOption">Select Language</span>
+    </div>
+    <div class="dropdown-options" id="options">
+        <div onclick="selectOption('Python')">Python</div>
+        <div onclick="selectOption('Java')">Java</div>
+        <div onclick="selectOption('JavaScript')">JavaScript</div>
+        <div onclick="selectOption('C++')">C++</div>
+    </div>
+
+</body>
+</html>

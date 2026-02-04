@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Course List</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f0f2f5;
+        margin: 20px;
+    }
+    .course-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .course-box {
+        background: #fff;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        padding: 15px;
+        width: 250px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    /* Full box highlight */
+    .course-box.highlight {
+        border-color: #007bff;
+        box-shadow: 0 0 15px #007bff;
+    }
+    /* Individual element glow */
+    .glow:hover {
+        color: #fff;
+        background: #007bff;
+        padding: 2px 5px;
+        border-radius: 5px;
+        transition: all 0.3s;
+    }
+    button {
+        margin-top: 10px;
+        padding: 5px 10px;
+        cursor: pointer;
+        border: none;
+        background: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+    button:hover {
+        background: #0056b3;
+    }
+    .thanks-message {
+        margin-top: 5px;
+        color: green;
+        font-weight: bold;
+    }
+    /* Modal styles */
+    .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1000; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgba(0,0,0,0.5); 
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 10% auto; 
+        padding: 20px;
+        border: 1px solid #888;
+        width: 300px; 
+        border-radius: 10px;
+        text-align: center;
+    }
+    .modal-content input, .modal-content textarea {
+        width: 90%;
+        margin: 5px 0;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+    .modal-content button {
+        width: 45%;
+        margin: 5px;
+    }
+</style>
+</head>
+<body>
+
+<h2>Course List</h2>
+<div class="course-container" id="courseContainer">
+    <!-- Course boxes will be injected here -->
+</div>
+
+<!-- Modal for Enroll/Feedback -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <h3 id="modalTitle">Enroll</h3>
+        <input type="text" id="userName" placeholder="Your Name">
+        <textarea id="userReason" placeholder="Reason for course"></textarea>
+        <br>
+        <button id="submitBtn">Submit</button>
+        <button id="cancelBtn">Cancel</button>
+    </div>
+</div>
+
+<script>
+const courses = [
+    { name: "Python Basics", instructor: "John Doe", subjects: ["Variables", "Loops", "Functions"] },
+    { name: "Web Development", instructor: "Jane Smith", subjects: ["HTML", "CSS", "JS"] },
+    { name: "Data Science", instructor: "Alice Johnson", subjects: ["Pandas", "NumPy", "ML"] }
+];
+
+// Generate random start date for courses
+function randomStartDate() {
+    const start = new Date();
+    start.setDate(start.getDate() + Math.floor(Math.random() * 30));
+    return start.toDateString();
+}
+
+// Render courses
+const container = document.getElementById('courseContainer');
+courses.forEach((course, index) => {
+    const box = document.createElement('div');
+    box.className = 'course-box';
+    box.innerHTML = `
+        <h3 class="glow">${course.name}</h3>
+        <p><strong>Instructor:</strong> <span class="glow">${course.instructor}</span></p>
+        <p><strong>Subjects:</strong> ${course.subjects.map(s => `<span class="glow">${s}</span>`).join(', ')}</p>
+        <p><strong>Starts On:</strong> <span class="glow start-date">${randomStartDate()}</span></p>
+        <button class="enrollBtn">Enroll</button>
+        <button class="feedbackBtn">Feedback</button>
+        <div class="thanks-message" id="thanks-${index}"></div>
+    `;
+    container.appendChild(box);
+
+    // Highlight box on mouse enter/leave
+    box.addEventListener('mouseenter', () => {
+        box.classList.add('highlight');
+    });
+    box.addEventListener('mouseleave', () => {
+        box.classList.remove('highlight');
+    });
+});
+
+// Modal handling
+let currentButton = null;
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modalTitle');
+const userNameInput = document.getElementById('userName');
+const userReasonInput = document.getElementById('userReason');
+const submitBtn = document.getElementById('submitBtn');
+const cancelBtn = document.getElementById('cancelBtn');
+
+container.addEventListener('click', (e) => {
+    if(e.target.classList.contains('enrollBtn') || e.target.classList.contains('feedbackBtn')) {
+        currentButton = e.target;
+        modal.style.display = 'block';
+        modalTitle.textContent = e.target.textContent;
+        userNameInput.value = '';
+        userReasonInput.value = '';
+    }
+});
+
+// Submit modal
+submitBtn.addEventListener('click', () => {
+    const name = userNameInput.value.trim();
+    const reason = userReasonInput.value.trim();
+    if(name && reason) {
+        const thanksDiv = currentButton.nextElementSibling;
+        thanksDiv.textContent = `Thanks ${name} for your ${currentButton.textContent.toLowerCase()}!`;
+        modal.style.display = 'none';
+    } else {
+        alert("Please enter your name and reason.");
+    }
+});
+
+// Cancel modal
+cancelBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+// Close modal on clicking outside
+window.addEventListener('click', (e) => {
+    if(e.target == modal) modal.style.display = 'none';
+});
+</script>
+
+</body>
+</html>
